@@ -1,9 +1,5 @@
-# Preparação do banco de dados
+#!/bin/bash
 
-Os comandos abaixo podem ser executados automaticamente atraves do script
-[db_podman.sh](scripts/db_podman.sh).
-
-```bash
 # Caso o contêiner já exista, removê-lo previamente
 podman container rm -f pg_django &> /dev/null
 
@@ -46,10 +42,16 @@ podman container run -itd \
     --tmpfs /tmp:rw,exec,size=256M \
     docker.io/library/postgres
 
+# Variável de comando de checagem do serviço do PostgreSQL
+CHKPG="podman exec -itu postgres pg_django psql -Atqc 'SELECT 1' &> /dev/null"
 
+# Aguardando o serviço do PostgreSQL subir
+while ! (eval "${CHKPG}"); do
+    sleep 1
+done
 
 # Criação do usuário para o Django
-podman container exec -itu postgres pg_django createuser -l user_django
+podman container exec -itu postgres pg_django createuser -l user_django  
 
 # Criação do banco de dados para o Django
 podman container exec -itu postgres pg_django createdb -O user_django db_django
@@ -66,7 +68,5 @@ podman container cp /tmp/.psqlrc pg_django:/var/lib/postgresql/.psqlrc
 
 # Ajustar o proprietário do arquivo
 podman container exec -itu root pg_django \
-    chown postgres: /var/lib/postgresql/.psqlrc 
-```
-
+    chown postgres: /var/lib/postgresql/.psqlrc
 

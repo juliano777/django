@@ -1,3 +1,4 @@
+# Preparativos do ambiente Django
 
 Preparativos via bash
 ```bash
@@ -30,4 +31,23 @@ django-admin startproject projeto_curso_django
 # Renomear a pasta criada para src, assim evitando confundir com a subpasta de
 # mesmo nome
 mv projeto_curso_django src
+
+# Entrar no diretório src
+cd src
+
+# Testando o servidor local
+./manage.py runserver
+```
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+November 07, 2023 - 14:25:53
+Django version 4.2.7, using settings 'projeto_curso_django.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
