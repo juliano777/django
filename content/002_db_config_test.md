@@ -30,7 +30,7 @@ functions, procedures etc.
 
 ```bash
 # Heredoc para criação do arquivo de configuração de base de dados
-cat << EOF > src/my_project/db.conf
+cat << EOF > src/projeto_curso_django/db.conf
 DB_HOST = 'localhost'
 DB_NAME = 'db_django'
 DB_USER = 'user_django'
@@ -41,12 +41,15 @@ EOF
 ```
 
 Modifique a sessão “Database” conforme abaixo:
+```bash
+# Editar o settings.py
+vim src/projeto_curso_django/settings.py
+```
 ```python
 # Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Database configuration file location
-DB_CONF_FILE = f'{BASE_DIR}/my_project/db.conf'
+DB_CONF_FILE = f'{BASE_DIR}/projeto_curso_django/db.conf'
 
 # Read the configurations from file
 DB_CONFIG = ConfigObj(DB_CONF_FILE)
@@ -71,4 +74,56 @@ DATABASES = {
                          'OPTIONS': {'options': DB_OPTIONS},
                          }
             }
+```
+   
+Verificar a árvore de diretórios de arquivos:
+```bash
+tree src/
+```
+```
+src/
+├── manage.py
+└── projeto_curso_django
+    ├── asgi.py
+    ├── db.conf
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-310.pyc
+    │   └── settings.cpython-310.pyc
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+2 directories, 9 files
+```
+
+   
+Logo após os imports adicione a seguinte linha:
+```python
+from configobj import ConfigObj
+```
+
+Entrar no shell do banco de dados
+```bash
+./src/manage.py dbshell
+```
+
+```sql
+-- Criar um esquema (namespace) para o Django
+CREATE SCHEMA ns_django;
+```
+
+Verificar a criação do schema consultando todos schemas que não são catálogos
+(metadados do PostgreSQL):
+```sql
+SELECT
+    nspname AS namespace
+FROM pg_catalog.pg_namespace
+WHERE nspname !~ '(^pg_|information_schema)';
+```
+```
+ namespace 
+-----------
+ public
+ ns_django
 ```

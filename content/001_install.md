@@ -1,5 +1,7 @@
 # Preparativos do ambiente Django
 
+[venv.sh](scripts/venv.sh)
+
 Preparativos via bash
 ```bash
 # Criação do ambiente virtual

@@ -10,7 +10,6 @@ podman network create --driver bridge net_pg 2> /dev/null
 INITDB="\
     -k \
     -E utf8 \
-    --auth=trust \
     --auth-local=trust \
     --auth-host=scram-sha-256 \
     -T portuguese \
@@ -55,6 +54,11 @@ podman container exec -itu postgres pg_django createuser -l user_django
 
 # Criação do banco de dados para o Django
 podman container exec -itu postgres pg_django createdb -O user_django db_django
+
+# Alterar a senha do usuário user_django
+SQL="ALTER ROLE user_django ENCRYPTED PASSWORD '123';"
+podman container exec -itu postgres pg_django \
+    psql -qc "${SQL}"
 
 # Criação do arquivo .psqlrc
 cat << EOF > /tmp/.psqlrc

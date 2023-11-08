@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from configobj import ConfigObj
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,13 +74,34 @@ WSGI_APPLICATION = 'projeto_curso_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# Database
 
+# Database configuration file location
+DB_CONF_FILE = f'{BASE_DIR}/projeto_curso_django/db.conf'
+
+# Read the configurations from file
+DB_CONFIG = ConfigObj(DB_CONF_FILE)
+
+# Database connection parameters
+
+DB_HOST = DB_CONFIG['DB_HOST']
+DB_NAME = DB_CONFIG['DB_NAME']
+DB_USER = DB_CONFIG['DB_USER']
+DB_PASSWORD = DB_CONFIG['DB_PASSWORD']
+DB_PORT = DB_CONFIG['DB_PORT']
+DB_OPTIONS = DB_CONFIG['DB_OPTIONS']
+
+DATABASES = {
+             'default': {
+                         'ENGINE': 'django.db.backends.postgresql',
+                         'NAME': DB_NAME,
+                         'USER': DB_USER,
+                         'PASSWORD': DB_PASSWORD,
+                         'HOST': DB_HOST,
+                         'PORT': DB_PORT,
+                         'OPTIONS': {'options': DB_OPTIONS},
+                         }
+            }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
