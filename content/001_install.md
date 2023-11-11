@@ -53,3 +53,11 @@ Django version 4.2.7, using settings 'projeto_curso_django.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
+
+Sobre esta mensagem:  
+```
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+```
+
+Isso se refere à base de dados do Django em si.  
+Após a configuração do banco de dados isso será resolvido.

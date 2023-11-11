@@ -127,3 +127,60 @@ WHERE nspname !~ '(^pg_|information_schema)';
  public
  ns_django
 ```
+
+Banco de dados configurado, então agora pode-se rodar a "migração" inicial, 
+que significa levar os dados iniciais do Django para o sistema gerenciador de
+banco de dados (SGBD), que neste caso é o PostgreSQL.
+```bash
+./manage.py migrate
+```
+```
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+```
+   
+Após a migração feita, com o comando abaixo entrar no prompt do banco de dados:
+```bash
+./manage.py dbshell
+```
+```
+Expanded display is used automatically.
+psql (16.1 (Ubuntu 16.1-1.pgdg22.04+1), server 16.0 (Debian 16.0-1.pgdg120+1))
+Type "help" for help.
+
+db_django=> 
+```
+Por ser PostgreSQL o prompt padrão é o psql, que é o cliente em modo texto
+padrão do SGBD.  
+  
+
+Verificar todas as tabelas do schema ns_django:
+```
+\dt ns_django.*
+```
+```
+                      List of relations
+  Schema   |            Name            | Type  |    Owner    
+-----------+----------------------------+-------+-------------
+ ns_django | auth_group                 | table | user_django
+ ns_django | auth_group_permissions     | table | user_django
+ ns_django | auth_permission            | table | user_django
+ ns_django | auth_user                  | table | user_django
+ ns_django | auth_user_groups           | table | user_django
+ ns_django | auth_user_user_permissions | table | user_django
+ ns_django | django_admin_log           | table | user_django
+ ns_django | django_content_type        | table | user_django
+ ns_django | django_migrations          | table | user_django
+ ns_django | django_session             | table | user_django
+(10 rows)
+```
+Essas tabelas foram criadas ao fazer a migração inicial.  
+São tabelas que contêm metadados do Django.  
+  
