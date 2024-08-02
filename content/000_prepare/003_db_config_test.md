@@ -86,8 +86,6 @@ DATABASES = {
             }
 ```
    
-
-
 Verificar a árvore de diretórios de arquivos:
 ```bash
 tree src/
@@ -108,6 +106,8 @@ src/
 
 2 directories, 9 files
 ```
+
+### Preparar o banco de dados
 
 Entrar no shell do banco de dados
 ```bash
@@ -134,10 +134,14 @@ WHERE nspname !~ '(^pg_|information_schema)';
  ns_django
 ```
 Saia do prompt do banco de dados utilizando `Ctrl + D`.  
+
+### Migração inicial
    
 Banco de dados configurado, então agora pode-se rodar a "migração" inicial, 
 que significa levar os dados iniciais do Django para o sistema gerenciador de
-banco de dados (SGBD), que neste caso é o PostgreSQL.
+banco de dados (SGBD), que neste caso é o PostgreSQL.  
+  
+Executar a migração inicial:
 ```bash
 ./manage.py migrate
 ```
