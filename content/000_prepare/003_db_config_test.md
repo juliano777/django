@@ -46,7 +46,7 @@ Modifique a sessão “Database” conforme abaixo:
 vim src/projeto_curso_django/settings.py
 ```
 ```python
-# Database ===================================================================
+# Database
 
 # Database configuration file location
 DB_CONF_FILE = f'{BASE_DIR}/projeto_curso_django/db.conf'
