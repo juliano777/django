@@ -40,11 +40,18 @@ DB_OPTIONS = '-c search_path=ns_django,public'
 EOF
 ```
 
-Modifique a sessão “Database” conforme abaixo:
 ```bash
 # Editar o settings.py
 vim src/projeto_curso_django/settings.py
 ```
+
+Logo após os imports adicione a seguinte linha:
+```python
+from configobj import ConfigObj
+```
+
+Modifique a sessão “Database” conforme abaixo:
+
 ```python
 # Database
 
@@ -76,10 +83,7 @@ DATABASES = {
             }
 ```
    
-Logo após os imports adicione a seguinte linha:
-```python
-from configobj import ConfigObj
-```
+
 
 Verificar a árvore de diretórios de arquivos:
 ```bash
