@@ -1,6 +1,6 @@
-# Preparativos do ambiente Django
+## Preparativos do ambiente Django
 
-[venv.sh](scripts/venv.sh)
+[venv.sh](../scripts/venv.sh)
 
 Preparativos via bash
 

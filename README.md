@@ -1,7 +1,7 @@
-# Curso de Django
+**Curso de Django**
 
 
 
-- [**Preparação do banco de dados (PostgreSQL)**](content/000_db.md)
-- [**Preparativos do ambiente Django**](content/001_env_prep.md)
-- [**Link**]()
+- [**Preparação do ambiente**](content/000_prepare/000_prep.md)
+<!-- - [**Preparação do ambiente**](content/000_prepare/000_prep.md) -->
+
