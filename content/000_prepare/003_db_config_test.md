@@ -2,12 +2,12 @@
 
 ### Schema 
 
-Também conhecido com namespace, o schema é um tipo de objeto de banco de dados
+Também conhecido com *namespace*, o *schema* é um tipo de objeto de banco de dados
 cujo propósito é ser uma camada de organização hierárquica que está logo
 abaixo de uma base de dados.  
-No PostgreSQL, “`public`” é o schema padrão, mas você pode criar seus próprios
-namespaces para organizar outros tipos de objetos como tabelas, views,
-functions, procedures etc.  
+No PostgreSQL, “`public`” é o *schema* padrão, mas você pode criar seus próprios
+*namespaces* para organizar outros tipos de objetos como tabelas, *views*,
+*functions*, *procedures* etc.  
   
 **Hierarquia de objetos de bancos de dados**
 ```
@@ -27,6 +27,7 @@ functions, procedures etc.
                ├─ Function
                └─ Procedure
 ```
+### Configuração de conexão ao banco de dados
 
 Heredoc para criação do arquivo de configuração de base de dados:
 ```bash
@@ -40,6 +41,8 @@ DB_OPTIONS = '-c search_path=ns_django,public'
 EOF
 ```
 
+Após a criação de um arquivo separado com os dados de conexão ao banco de
+dados é preciso editar o arquivo `settings.py`:
 ```bash
 # Editar o settings.py
 vim src/projeto_curso_django/settings.py
@@ -168,7 +171,7 @@ Após a migração feita, com o comando abaixo entrar no prompt do banco de dado
 ```
 ```
 Expanded display is used automatically.
-psql (16.1 (Ubuntu 16.1-1.pgdg22.04+1), server 16.0 (Debian 16.0-1.pgdg120+1))
+psql (16.3)
 Type "help" for help.
 
 db_django=> 
