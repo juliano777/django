@@ -9,7 +9,7 @@ No PostgreSQL, “`public`” é o schema padrão, mas você pode criar seus pr�
 namespaces para organizar outros tipos de objetos como tabelas, views,
 functions, procedures etc.  
   
-*Hierarquia de objetos de bancos de dados*  
+**Hierarquia de objetos de bancos de dados**
 ```
 - Server
    └─ PostgreSQL Instance (Port 5432 by default)
@@ -28,8 +28,8 @@ functions, procedures etc.
                └─ Procedure
 ```
 
+Heredoc para criação do arquivo de configuração de base de dados:
 ```bash
-# Heredoc para criação do arquivo de configuração de base de dados
 cat << EOF > src/projeto_curso_django/db.conf
 DB_HOST = 'localhost'
 DB_NAME = 'db_django'
@@ -46,7 +46,7 @@ Modifique a sessão “Database” conforme abaixo:
 vim src/projeto_curso_django/settings.py
 ```
 ```python
-# Database
+# Database ===================================================================
 
 # Database configuration file location
 DB_CONF_FILE = f'{BASE_DIR}/projeto_curso_django/db.conf'
@@ -183,4 +183,3 @@ Verificar todas as tabelas do schema ns_django:
 ```
 Essas tabelas foram criadas ao fazer a migração inicial.  
 São tabelas que contêm metadados do Django.  
-  
