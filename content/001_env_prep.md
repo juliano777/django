@@ -3,41 +3,55 @@
 [venv.sh](scripts/venv.sh)
 
 Preparativos via bash
+
+Criação do ambiente virtual:
 ```bash
-# Criação do ambiente virtual
 python3 -m venv /tmp/venv
+```
 
-# Habilitar o novo ambiente virtual
+Habilitar o novo ambiente virtual:
+```bash
 source /tmp/venv/bin/activate
+```
 
-# Criação do arquivo de pacotes necesários
+Criação do arquivo de pacotes necesários:
+```bash
 cat << EOF > /tmp/requirements.txt
 django
 psycopg
 configobj
 ipython
 EOF
+```
 
-# Atualizar o pip
+Atualizar o pip:
+```bash
 pip install -U pip
+```
 
-# Instalar os pacotes
+Instalar os pacotes:
+```bash
 pip install -r /tmp/requirements.txt
 ```
 
-
+Criação de um projeto Django:
 ```bash
-# Criação de um projeto Django
 django-admin startproject projeto_curso_django
+```
 
-# Renomear a pasta criada para src, assim evitando confundir com a subpasta de
-# mesmo nome
+Renomear a pasta criada para src, assim evitando confundir com a subpasta de
+mesmo nome:
+```bash
 mv projeto_curso_django src
+```
 
-# Entrar no diretório src
+Entrar no diretório src:
+```bash
 cd src
+```
 
-# Testando o servidor local
+Testando o servidor local:
+```bash
 ./manage.py runserver
 ```
 ```
@@ -48,8 +62,8 @@ System check identified no issues (0 silenced).
 
 You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
 Run 'python manage.py migrate' to apply them.
-November 07, 2023 - 14:25:53
-Django version 4.2.7, using settings 'projeto_curso_django.settings'
+August 02, 2024 - 14:49:43
+Django version 5.0.7, using settings 'projeto_curso_django.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```

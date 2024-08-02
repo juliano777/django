@@ -2,4 +2,3 @@ django
 psycopg
 configobj
 ipython
-
