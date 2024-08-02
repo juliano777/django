@@ -1,4 +1,4 @@
-## Django apps
+## Django apps e views
 
 Criar um novo app de receitas:
 ```bash
@@ -30,7 +30,7 @@ vim recipes/views.py
 ```
 ```python
 from django.http import HttpResponse
-from django.shortcuts import render
+#from django.shortcuts import render
 from django.urls import path
 
 # Create your views here.
