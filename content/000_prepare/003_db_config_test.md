@@ -76,6 +76,11 @@ DATABASES = {
             }
 ```
    
+Logo após os imports adicione a seguinte linha:
+```python
+from configobj import ConfigObj
+```
+
 Verificar a árvore de diretórios de arquivos:
 ```bash
 tree src/
@@ -95,12 +100,6 @@ src/
     └── wsgi.py
 
 2 directories, 9 files
-```
-
-   
-Logo após os imports adicione a seguinte linha:
-```python
-from configobj import ConfigObj
 ```
 
 Entrar no shell do banco de dados
