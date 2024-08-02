@@ -1,6 +1,6 @@
-# Configuração e teste de conexão com o banco de dados
+## Configuração e teste de conexão com o banco de dados
 
-## Schema 
+### Schema 
 
 Também conhecido com namespace, o schema é um tipo de objeto de banco de dados
 cujo propósito é ser uma camada de organização hierárquica que está logo
