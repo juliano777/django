@@ -130,7 +130,8 @@ WHERE nspname !~ '(^pg_|information_schema)';
  public
  ns_django
 ```
-
+Saia do prompt do banco de dados utilizando `Ctrl + D`.  
+   
 Banco de dados configurado, então agora pode-se rodar a "migração" inicial, 
 que significa levar os dados iniciais do Django para o sistema gerenciador de
 banco de dados (SGBD), que neste caso é o PostgreSQL.
