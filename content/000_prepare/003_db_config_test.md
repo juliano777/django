@@ -31,7 +31,7 @@ No PostgreSQL, “`public`” é o *schema* padrão, mas você pode criar seus p
 
 Heredoc para criação do arquivo de configuração de base de dados:
 ```bash
-cat << EOF > src/projeto_curso_django/db.conf
+cat << EOF > projeto_curso_django/db.conf
 DB_HOST = 'localhost'
 DB_NAME = 'db_django'
 DB_USER = 'user_django'
@@ -45,11 +45,13 @@ Após a criação de um arquivo separado com os dados de conexão ao banco de
 dados é preciso editar o arquivo `settings.py`:
 ```bash
 # Editar o settings.py
-vim src/projeto_curso_django/settings.py
+vim projeto_curso_django/settings.py
 ```
 
 Logo após os imports adicione a seguinte linha:
 ```python
+
+# Third party imports
 from configobj import ConfigObj
 ```
 
@@ -88,30 +90,33 @@ DATABASES = {
    
 Verificar a árvore de diretórios de arquivos:
 ```bash
-tree src/
+tree
 ```
 ```
-src/
+.
+├── db.sqlite3
 ├── manage.py
 └── projeto_curso_django
     ├── asgi.py
     ├── db.conf
     ├── __init__.py
     ├── __pycache__
-    │   ├── __init__.cpython-310.pyc
-    │   └── settings.cpython-310.pyc
+    │   ├── __init__.cpython-312.pyc
+    │   ├── settings.cpython-312.pyc
+    │   ├── urls.cpython-312.pyc
+    │   └── wsgi.cpython-312.pyc
     ├── settings.py
     ├── urls.py
     └── wsgi.py
 
-2 directories, 9 files
+3 directories, 12 files
 ```
 
 ### Preparar o banco de dados
 
 Entrar no shell do banco de dados
 ```bash
-./src/manage.py dbshell
+./manage.py dbshell
 ```
 
 ```sql

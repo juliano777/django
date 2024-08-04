@@ -34,18 +34,36 @@ pip install -r /tmp/requirements.txt
 
 Criação de um projeto Django:
 ```bash
-django-admin startproject projeto_curso_django
-```
+# Criação do diretório que conterá os códigos
+mkdir src
 
-Renomear a pasta criada para src, assim evitando confundir com a subpasta de
-mesmo nome:
-```bash
-mv projeto_curso_django src
+# Criação do projeto dentro do diretório
+django-admin startproject projeto_curso_django src/
 ```
 
 Entrar no diretório src:
 ```bash
 cd src
+```
+
+> **_Nota:_**  A partir de agora todos os comandos serão dados a partir do
+> diretório **`src`**.
+
+Verificar o conteúdo do diretório atual:
+```bash
+tree
+```
+```
+.
+├── manage.py
+└── projeto_curso_django
+    ├── asgi.py
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+
+2 directories, 6 files
 ```
 
 Testando o servidor local:
@@ -73,3 +91,5 @@ You have 18 unapplied migration(s). Your project may not work properly until you
 
 Isso se refere à base de dados do Django em si.  
 Após a configuração do banco de dados isso será resolvido.
+
+Por hora vamos cancelar utilizando a combinação de teclas `Ctrl + C`.

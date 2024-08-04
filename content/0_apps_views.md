@@ -39,10 +39,10 @@ def home(request):
     return HttpResponse('Home')
 
 def contact(request):
-    return HttpResponse('contato')
+    return HttpResponse('Contato')
 
 def about(request):
-    return HttpResponse('sobre')        
+    return HttpResponse('Sobre')        
 ```
 
 Criar URLs para o app:
@@ -82,3 +82,11 @@ urlpatterns = (
     path('', include('recipes.urls')),  # Dentro de /
 )
 ```
+
+Para testar, abra em seu navegador os seguinte endereços:
+- [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+- [http://127.0.0.1:8000/about](http://127.0.0.1:8000/about)
+- [http://127.0.0.1:8000/contact](http://127.0.0.1:8000/contact)
+
+Nota-se que conforme a URL digitada foi entregue uma página conforme a
+requisição, que por sua vez foi chamada uma função de *`view`*.
