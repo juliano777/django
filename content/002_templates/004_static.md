@@ -19,6 +19,15 @@ body {
 }
 
 p, h1, h2, h3, h4, h5, h6, a, li, span {
-    color: #333333; /* Aplica a cor da fonte para todos esses elementos */
+    color: #067528; /* Aplica a cor da fonte para todos esses elementos */
 }
 ```
+
+Dentro do arquivo `head.html`, dentro da tag `<head>`, no final, adicione a
+seguinte linha:
+```html
+<link rel="stylesheet" href="static/css/styles.css">
+```
+
+Após salvar as alterações atualize a página no navegador para notar as
+diferenças de *layout*.
