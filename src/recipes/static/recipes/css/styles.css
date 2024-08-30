@@ -1,0 +1,11 @@
+body {
+    background-color: #006600; /* Verde escuro */
+    color: #FFFF00; /* Amarelo */
+    font-family: Arial, sans-serif; /* Fonte padrão, pode ser alterada */
+    margin: 0;
+    padding: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6, a, li, span {
+    color: #FFFF00; /* Aplica a cor da fonte para todos esses elementos */
+}

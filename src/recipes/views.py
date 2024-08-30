@@ -15,3 +15,7 @@ def about(request):
     cntxt = {'title': 'About', 'name': 'Bla bla bla'}
     return render(request, 'about.html', context=cntxt)
 
+def teste_local(request):
+    name = 'Teste local de arquivos estáticos e templates'
+    cntxt = {'title': 'TEMPLATE LOCAL', 'name': name}
+    return render(request, 'teste-local.html', context=cntxt)
