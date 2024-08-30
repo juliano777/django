@@ -25,6 +25,20 @@ mv recipes/templates/head.html global/templates/
 mv recipes/static/css/styles.css global/static/css/
 ```
 
+Verificar a estrutura novamente, agora com os arquivos que foram movidos:
+```bash
+tree global/
+```
+```
+tree global
+global
+├── static
+│   └── css
+│       └── styles.css
+└── templates
+    └── head.html
+```
+
 Adicione as seguintes linhas ao final do arquivo considerando as linhas em
 branco também:
 ```bash
