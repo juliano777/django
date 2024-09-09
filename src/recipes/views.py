@@ -19,3 +19,8 @@ def teste_local(request):
     name = 'Teste local de arquivos estáticos e templates'
     cntxt = {'title': 'TEMPLATE LOCAL', 'name': name}
     return render(request, 'teste-local.html', context=cntxt)
+
+def recipe(request, id):
+    cntxt = {'title': f'Receita {id}', 'name': f'{id} - Receita'}
+    return render(request, 'recipe.html', context=cntxt)
+
