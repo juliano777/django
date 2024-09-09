@@ -21,6 +21,6 @@ def teste_local(request):
     return render(request, 'teste-local.html', context=cntxt)
 
 def recipe(request, id):
-    cntxt = {'title': f'Receita {id}', 'name': f'{id} - Receita'}
+    cntxt = {'title': f'Receita {id}', 'name': f'id: {id}'}
     return render(request, 'recipe.html', context=cntxt)
 
