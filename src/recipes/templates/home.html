@@ -1,7 +1,10 @@
 {% include 'head.html' %}
 
-<body>
-    <h1>Receitas</h1>
-    {{ name }}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+    <h2>Bem-vindo à página inicial!</h2>
+    <p>Este é o conteúdo específico desta página.</p>
+{% endblock %}

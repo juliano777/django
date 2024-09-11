@@ -1,7 +1,12 @@
 ## Templates
 
-Bla bla bla
-
+Um *template* é um arquivo de texto, cujo formato pode ser HTML, XML, CSV e
+outros.  
+*Templates* exibem os dados conforme *views* definiram.  
+  
+https://docs.djangoproject.com/en/5.1/topics/templates/   
+  
+  
 Criar um diretório de *templates* dentro do diretório da app `recipes`:
 ```bash
 mkdir recipes/templates
