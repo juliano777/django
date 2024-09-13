@@ -3,6 +3,8 @@
 {% block title %}Home page{% endblock %}
 
 {% block content %}
-    <h1>Página inicial</h1>
-    <p>Este é o conteúdo específico desta página.</p>
+<h1>Cidade de São Paulo</h1>
+    {% for k, v in cntxt.items %}
+        &nbsp;<strong>{{ k }}</strong>: {{ v }}<br />
+    {% endfor %}
 {% endblock %}
