@@ -14,35 +14,102 @@ para um conteúdo e ser o conteúdo que substituirá o espaço reservado. Nos
 que será substituído por um bloco no *template* "filho" (que herda), cujo nome
 de bloco será o mesmo. Em *templates* filhos a *tag* `block` é o conteúdo que
 substituirá o espaço reservado no *template* herdado com o mesmo nome.  
+  
+Sintaxe:
+
+```
+{% block nome_do_bloco %}
+<conteúdo>
+{% endblock %}
+```
+
+ou
+
+```
+{% block nome_do_bloco %}
+<conteúdo>
+{% endblock nome_do_bloco %}
+```
+<br />   
 
 
 Criação do *template* base:
 ```bash
-# home.html
 vim recipes/templates/base.html
 ```
 ```html
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <!-- Título da página a ser substituído -->
+        {% block title %}Novo título{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
 <body>
-    {% block foo %}
-    <p>Conteúdo a ser substituído.</p>
+    {% block content %}
+    <p>Conteúdo a ser substituído</p>
     {% endblock %}
 </body>
 </html>
 ```
+
 
 Modificar o arquivo `home.html` de forma que ele herde `base.html`:
 ```bash
 vim recipes/templates/home.html
 ```
 ```html
-{% include 'head.html' %}
-
 {% extends 'base.html' %}
 
-{% block title %}Página Inicial{% endblock %}
+{% block title %}Home page{% endblock %}
 
 {% block content %}
-    <h2>Bem-vindo à página inicial!</h2>
+    <h1>Página inicial</h1>
     <p>Este é o conteúdo específico desta página.</p>
 {% endblock %}
 ```
+
+Modificar o arquivo `about.html` de forma que ele herde `base.html`:
+```bash
+vim recipes/templates/about.html
+```
+```html
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    <h1>Sobre</h1>
+    Bla bla bla
+{% endblock %}
+```
+
+Editar o arquivo de *views* da app `recipe`:
+```bash
+vim recipes/views.py
+```
+Alterar somente as funções `home` e `about`:
+```python
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+```
+Com o uso de herança de *templates*, nesse caso não havia mais a necessidade
+de usar contextos nas funções.  
+   
+Testando no navegador os endereços:  
+
+`http://localhost:8000`  
+`http://localhost:8000/about`
+
+
+
+

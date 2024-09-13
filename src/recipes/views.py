@@ -4,16 +4,14 @@ from django.urls import path
 # Create your views here.
 
 def home(request):
-    cntxt = {'title': 'Home page', 'name': 'Página inicial'}
-    return render(request, 'home.html', context=cntxt)
+    return render(request, 'home.html')
 
 def contact(request):
     cntxt = {'title': 'Contact', 'name': '+5511999999999999'}
     return render(request, 'contact.html', context=cntxt)
 
 def about(request):
-    cntxt = {'title': 'About', 'name': 'Bla bla bla'}
-    return render(request, 'about.html', context=cntxt)
+    return render(request, 'about.html')
 
 def teste_local(request):
     name = 'Teste local de arquivos estáticos e templates'

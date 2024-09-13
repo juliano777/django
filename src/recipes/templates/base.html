@@ -6,9 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <!-- Título da página a ser substituído -->
         {% block title %}Novo título{% endblock %}
     </title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-
+<body>
+    {% block content %}
+    <p>Conteúdo a ser substituído</p>
+    {% endblock %}
+</body>
+</html>
