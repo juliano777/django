@@ -4,16 +4,13 @@ from django.urls import path
 # Create your views here.
 
 def home(request):
-    d = {
-        'Continente': 'América do Sul',
-        'País': 'Brasil',
-        'Estado': 'São Paulo',
-        'Área total': '1.521,202 km²',
-        'Altitude': '772 m',
-        'Fuso horário': 'Hora de Brasília (UTC−3)',
-    }
-
-    return render(request, 'home.html', context={'cntxt': d})
+    # Tenta converter o valor para um número inteiro
+    try:
+        numero = int(request.GET.get('numero'))
+    except:
+        # Caso algo ter errado seu valor será nulo
+        numero = None
+    return render(request, 'home.html', context={'numero': numero})
 
 def contact(request):
     cntxt = {'title': 'Contact', 'name': '+5511999999999999'}

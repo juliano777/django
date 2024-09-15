@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}Home page{% endblock %}
-
+     
 {% block content %}
-<h1>Cidade de São Paulo</h1>
-    {% for k, v in cntxt.items %}
-        &nbsp;<strong>{{ k }}</strong>: {{ v }}<br />
-    {% endfor %}
+    <h1>Página inicial</h1>
+    {% if numero is None %}
+        <p>&nbsp;Nenhum número foi fornecido na URL.</p>
+    {% elif numero < 0 %}
+        <p>&nbsp;{{ numero }} é negativo</p>
+    {% elif numero == 0 %}
+        <p>&nbsp;Zero!</p>
+    {% else %}
+        <p>&nbsp;{{ numero }} é positivo</p>
+    {% endif %}
 {% endblock %}
