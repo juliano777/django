@@ -4,9 +4,17 @@
      
 {% block content %}
     <h1>Página inicial</h1>
-    &nbsp;a_text|upper&nbsp;&rarr;&nbsp;{{ a_text|upper }}<br />
-    &nbsp;a_text|title&nbsp;&rarr;&nbsp;{{ a_text|title }}<br />
-    &nbsp;a_text|add:'2'&nbsp;&rarr;&nbsp;{{ a_text|add:'2' }}<br />
-    &nbsp;a_number|add:'2'&nbsp;&rarr;&nbsp;{{ a_number|add:'2' }}<br />
+    &nbsp;a_text|upper &nbsp;&rarr;&nbsp;{{ a_text|upper }}<br />
+    &nbsp;a_text|title &nbsp;&rarr;&nbsp;{{ a_text|title }}<br />
+    &nbsp;a_text|add:'2' &nbsp;&rarr;&nbsp;{{ a_text|add:'2' }}<br />
+    &nbsp;a_number|add:'2' &nbsp;&rarr;&nbsp;{{ a_number|add:'2' }}<br />
+    &nbsp;a_text|capfirst &nbsp;&rarr;&nbsp;{{ a_text|capfirst }}<br />
+    &nbsp;"Copo d'água"|addslashes &nbsp;&rarr;&nbsp;
+    {{ "Copo d'água"|addslashes }}<br />
+    &nbsp;now|date:'Y-m-d H:i' &nbsp;&rarr;&nbsp;
+    {{now|date:'Y-m-d H:i'}}<br />
+    
+    
+    
     
 {% endblock %}

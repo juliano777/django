@@ -1,10 +1,15 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.urls import path
 
 # Create your views here.
 
 def home(request):
-    cntxt = {'a_text': 'foo', 'a_number': 7}
+    cntxt = {
+        'a_text': 'foo',
+        'a_number': 7,
+        'now': datetime.now()
+        }
     return render(request, 'home.html', context=cntxt)
 
 def contact(request):
