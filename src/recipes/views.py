@@ -4,13 +4,8 @@ from django.urls import path
 # Create your views here.
 
 def home(request):
-    # Tenta converter o valor para um número inteiro
-    try:
-        numero = int(request.GET.get('numero'))
-    except:
-        # Caso algo ter errado seu valor será nulo
-        numero = None
-    return render(request, 'home.html', context={'numero': numero})
+    cntxt = {'a_text': 'foo', 'a_number': 7}
+    return render(request, 'home.html', context=cntxt)
 
 def contact(request):
     cntxt = {'title': 'Contact', 'name': '+5511999999999999'}

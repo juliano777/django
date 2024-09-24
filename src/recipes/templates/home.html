@@ -4,13 +4,9 @@
      
 {% block content %}
     <h1>Página inicial</h1>
-    {% if numero is None %}
-        <p style="color: orange;">&nbsp;Nenhum número foi fornecido na URL.</p>
-    {% elif numero < 0 %}
-        <p style="color: red;">&nbsp;{{ numero }} é negativo</p>
-    {% elif numero == 0 %}
-        <p style="color: grey;">&nbsp;Zero!</p>
-    {% else %}
-        <p style="color: darkgreen;">&nbsp;{{ numero }} é positivo</p>
-    {% endif %}
+    &nbsp;a_text|upper&nbsp;&rarr;&nbsp;{{ a_text|upper }}<br />
+    &nbsp;a_text|title&nbsp;&rarr;&nbsp;{{ a_text|title }}<br />
+    &nbsp;a_text|add:'2'&nbsp;&rarr;&nbsp;{{ a_text|add:'2' }}<br />
+    &nbsp;a_number|add:'2'&nbsp;&rarr;&nbsp;{{ a_number|add:'2' }}<br />
+    
 {% endblock %}
