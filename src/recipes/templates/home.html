@@ -1,19 +1,46 @@
 {% extends 'base.html' %}
 
 {% block title %}Home page{% endblock %}
-     
+
 {% block content %}
     <h1>Página inicial</h1>
+    <h2>Variáveis</h2>    
+    
+    <!-- Loop na variável cntxt que é um dicionário (chaves e valores)-->
+    {% for k, v in cntxt.items %}
+        &nbsp;<strong> - {{ k }}</strong> &rarr; {{ v }}<br />        
+    {% endfor %}
+    
+    <!-- Testes com filtros -->
+    <h2>Testes com as variáveis do dicionário</h2>
     &nbsp;a_text|upper &nbsp;&rarr;&nbsp;{{ a_text|upper }}<br />
-    &nbsp;a_text|title &nbsp;&rarr;&nbsp;{{ a_text|title }}<br />
     &nbsp;a_text|add:'2' &nbsp;&rarr;&nbsp;{{ a_text|add:'2' }}<br />
     &nbsp;a_number|add:'2' &nbsp;&rarr;&nbsp;{{ a_number|add:'2' }}<br />
-    &nbsp;a_text|capfirst &nbsp;&rarr;&nbsp;{{ a_text|capfirst }}<br />
+    &nbsp;phrase|title &nbsp;&rarr;&nbsp;
+        {{ phrase|title }}<br />
+    &nbsp;phrase|capfirst &nbsp;&rarr;&nbsp;
+        {{phrase|capfirst }}<br />
     &nbsp;"Copo d'água"|addslashes &nbsp;&rarr;&nbsp;
-    {{ "Copo d'água"|addslashes }}<br />
+        {{ "Copo d'água"|addslashes }}<br />
     &nbsp;now|date:'Y-m-d H:i' &nbsp;&rarr;&nbsp;
-    {{now|date:'Y-m-d H:i'}}<br />
-    
+        {{ now|date:'Y-m-d H:i' }}<br />
+    &nbsp;phrase|cut:' ' &nbsp;&rarr;&nbsp;
+        {{phrase|cut:' ' }}<br />
+    &nbsp;phrase|upper|slice:':11'|default:'Sem valor' &nbsp;&rarr;&nbsp;
+        {{phrase|upper|slice:':11'|default:'Sem valor' }}<br />
+    &nbsp;bool_false|default:'Bla bla bla' &nbsp;&rarr;&nbsp;
+        {{ bool_false|default:'Bla bla bla' }}<br />
+    &nbsp;bool_true|default:'Bla bla bla' &nbsp;&rarr;&nbsp;
+        {{ bool_true|default:'Bla bla bla' }}<br />
+    &nbsp;none_var|default_if_none:'Variável nula' &nbsp;&rarr;&nbsp;
+        {{ none_var|default_if_none:'Variável nula' }}<br />
+    &nbsp;cities|dictsort:'name' &nbsp;&rarr;&nbsp;
+        {{ cities|dictsort:'name' }}<br />
+
+    <h2>Loop for</h2>    
+    {% for i in books|dictsortreversed:'author.b_year' %}
+        &nbsp;* {{ i.title }} - ({{ i.author.name }}, {{ i.author.b_year}})<br />
+    {% endfor %}
     
     
     
