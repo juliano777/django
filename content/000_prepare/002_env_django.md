@@ -49,6 +49,19 @@ cd src
 > **_Nota:_**  A partir de agora todos os comandos serão dados a partir do
 > diretório **`src`**.
 
+Criar o diretório `core`, o qual conterá códigos Python úteis para todo o
+projeto:
+```bash
+mkdir core
+```
+
+Criar os arquivos `utils.py` e `utils.py` dentro de `core`, sendo que o último
+é para que o diretório possa ser tratado como pacote:
+
+```bash
+touch core/{utils,__init__}.py
+```
+
 Verificar o conteúdo do diretório atual:
 ```bash
 tree

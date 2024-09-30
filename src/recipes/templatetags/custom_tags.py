@@ -15,7 +15,7 @@ def randpass(plength: int, digits: bool, special: bool) -> str:
     c = s_ascii_letters
 
     if digits:
-        c += s_digits        
+        c += s_digits
 
     if special:
         c += s_punctuation

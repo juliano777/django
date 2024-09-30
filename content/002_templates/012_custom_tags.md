@@ -26,11 +26,7 @@ register = template_lib()
 
 
 @register.simple_tag
-def randpass(
-    plength: int=10,
-    digits: bool=True,
-    special: bool=True,
-) -> str:
+def randpass(plength: int, digits: bool, special: bool) -> str:
 
     # Characters
     c = s_ascii_letters
@@ -43,7 +39,7 @@ def randpass(
 
     pw = ''
 
-    for _ in range(plength):
+    for _ in range(int(plength)):
         pw += r_choice(c)
 
     return pw
@@ -69,7 +65,7 @@ Alterar o arquivo de *views* da *app* `recipes`:
 ```bash
 vim recipes/views.py
 ```
-Redefinir a funçãso `home`:
+Redefinir a função `home`:
 ```python
 
 def home(request, plength, digits, special):
@@ -82,5 +78,54 @@ def home(request, plength, digits, special):
     return render(request, 'home.html', context={'numero': numero})
 ```
 
-http://localhost:8000/?plength=7&digits=0&special=0
-http://localhost:8000/?plength=15&digits=0
+Crie a função `type_cast` em `core/utils.py`:
+```bash
+vim core/utils.py
+```
+```python
+def type_cast(value: str, type_, default: str):
+    '''
+    Convert any value to any type.
+    If this is not possible a default value will assume.
+    '''
+    try:
+        if value is not None:
+            return type_(value)
+        else:
+            return type_(default)
+
+    except (ValueError, TypeError):
+        return type_(default)
+```
+
+Altere o arquivo de *views* da *app* recipes:
+```bash
+vim recipes/views.py
+```
+
+Adicione uma nova importação (adicione no final deles):
+```python
+from core.utils import type_cast
+```
+
+Modifique a *view* `home`:
+```python
+def home(request):
+    plength = type_cast(request.GET.get('plength'), int, 7)
+    digits = type_cast(request.GET.get('digits'), bool, True)
+    special = type_cast(request.GET.get('special'), bool, True)
+    cntxt = {'plength': plength, 'digits': digits, 'special': special}
+    return render(request, 'home.html', context=cntxt)
+```
+
+Senha de 30 caracteres, sem dígitos e sem caracteres especiais:  
+http://localhost:8000/?plength=30&digits=&special=  
+  
+Senha de 30 caracteres e sem caracteres especiais:  
+http://localhost:8000/?plength=30&special=
+
+Senha de 30 caracteres e sem dígitos:
+http://localhost:8000/?plength=30&digits=
+
+Observe que para ter um valor `False` é necessário que após o sinal de igual
+(`=`) não tenha qualquer valor.
