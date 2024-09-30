@@ -15,35 +15,72 @@ Edite o arquivo de *tags* customizadas:
 vim recipes/templatetags/custom_tags.py
 ```
 ```python
+from random import choice as r_choice
+from string import ascii_letters as s_ascii_letters
+from string import digits as s_digits
+from string import punctuation as s_punctuation
+
 from django.template import Library as template_lib
 
 register = template_lib()
 
 
 @register.simple_tag
-def ul(value: str, n_items: int) -> str:
-    s = '<ul>'
-    for i in range(n_items):
-        s = f'{s}\n    <li><b>{value.lower()}</b> {i + 1}</li>'
+def randpass(
+    plength: int=10,
+    digits: bool=True,
+    special: bool=True,
+) -> str:
 
-    return f'{s}\n</ul>'
+    # Characters
+    c = s_ascii_letters
+
+    if digits:
+        c += s_digits
+
+    if special:
+        c += s_punctuation
+
+    pw = ''
+
+    for _ in range(plength):
+        pw += r_choice(c)
+
+    return pw
 ```
 
 Edite o *template* `home.html`:
 ```bash
 vim recipes/templates/home.html
 ```
-```python
-from django.template import Library as template_lib
+```html
+{% extends 'base.html' %}
+{% load custom_tags %}
 
-register = template_lib()
+{% block title %}Home page{% endblock %}
 
-
-@register.simple_tag
-def ul(value: str, n_items: int) -> str:
-    s = '<ul>'
-    for i in range(n_items):
-        s = f'{s}\n    <li><b>{value.lower()}</b> {i + 1}</li>'
-
-    return f'{s}\n</ul>'
+{% block content %}
+    Lista de teste: {% ul 'Foo' 5 %}
+    
+{% endblock %}
 ```
+
+Alterar o arquivo de *views* da *app* `recipes`:
+```bash
+vim recipes/views.py
+```
+Redefinir a funçãso `home`:
+```python
+
+def home(request, plength, digits, special):
+    # Tenta converter o valor para um número inteiro
+    try:
+        numero = int(request.GET.get('numero'))
+    except:
+        # Caso algo ter errado seu valor será nulo
+        numero = None
+    return render(request, 'home.html', context={'numero': numero})
+```
+
+http://localhost:8000/?plength=7&digits=0&special=0
+http://localhost:8000/?plength=15&digits=0

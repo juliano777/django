@@ -4,6 +4,8 @@
 {% block title %}Home page{% endblock %}
 
 {% block content %}
-    Lista de teste: {% ul 'Foo' %}
+    <br />
+    &nbsp;<b>Sugestão de senha aleatória</b>:
+    &nbsp;{% randpass plength digits special %}
     
 {% endblock %}
