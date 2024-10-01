@@ -20,9 +20,9 @@ from string import ascii_letters as s_ascii_letters
 from string import digits as s_digits
 from string import punctuation as s_punctuation
 
-from django.template import Library as template_lib
+from django.template import Library as template_Lib
 
-register = template_lib()
+register = template_Lib()
 
 
 @register.simple_tag
