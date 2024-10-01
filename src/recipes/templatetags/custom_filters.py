@@ -17,5 +17,8 @@ def first_letter(value: str) -> str:
 
 # Slicing
 @register.filter(name='slicer')
-def slicer(value: str, start: int=0, end: int=None):
+def slicer(value: str, intrvl: str) -> str:    
+    intrvl = intrvl.split(',')
+    start = intrvl[0]
+    end = intrvl[1]
     return value[int(start):int(end)]

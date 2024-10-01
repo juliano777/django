@@ -1,17 +1,1 @@
-{% extends 'base.html' %}
-{% load custom_tags %}
-{% load custom_filters %}
 
-{% block title %}Home page{% endblock %}
-
-{% block content %}
-    <br />
-    &nbsp;<b>Sugestão de senha aleatória</b>:
-    &nbsp;{% randpass plength digits special %}<br />    
-    &nbsp;A quantidade de caracteres da senha é {{ plength }} e seu cubo é: 
-    {{ plength|cube }}<br />
-    Palavra: "Foo"; primeira letra: {{ 'Foo' | first_letter }}
-    <p>{{ "Exemplo de string" | slicer:3:8 }}</p>
-    "PostgreSQL"; {{ 'PostgreSQL' | slicer:7:11 }}
-    
-{% endblock %}
