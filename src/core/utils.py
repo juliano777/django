@@ -1,4 +1,7 @@
-def type_cast(value: str, type_, default: str):
+from typing import Any
+
+
+def type_cast(value: str, type_: Any, default: str) -> Any:
     '''
     Convert any value to any type.
     If this is not possible a default value will assume.
