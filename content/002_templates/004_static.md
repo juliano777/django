@@ -1,3 +1,5 @@
+## Arquivos estáticos
+
 Criar a hierarquia de pastas `static/css` dentro da pasta do app:
 
 ```bash

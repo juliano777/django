@@ -1,3 +1,15 @@
 # Templates
 
-- [**Apps e views**](001_templates.md)
+- [**Templates**](content/002_templates/001_templates.md)
+- [**Função render e context**](content/002_templates/002_render_context.md)
+- [**Extender um template**](content/002_templates/003_extends.md)
+- [**Arquivos estáticos**](content/002_templates/004_static.md)
+- [**Templates globais e arquivos estáticos globais**](content/002_templates/005_global_template_static.md)
+- [**Templates locais e arquivos estáticos locais**](content/002_templates/006_local_template_static.md)
+- [**URLs dinâmicas**](content/002_templates/007_dynamic_url.md)
+- [**Herança de template**](content/002_templates/008_template_inheritance.md)
+- [**Loop for**](content/002_templates/009_for.md)
+- [**if**](content/002_templates/010_if.md)
+- [**Filtros**](content/002_templates/011_filters.md)
+- [**Tags customizadas**](content/002_templates/012_custom_tags.md)
+- [**Filtros customizados**](content/002_templates/013_custom_filters.md)
